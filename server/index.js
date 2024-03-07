@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 dotenv.config();
-
+import userRoutes from './Router/user.router.js'
 //Port number initialize:
 let PORT = process.env.PORT || 5000;
 //Mongodb conncetion initializing:
@@ -10,6 +10,11 @@ let uri = process.env.MONGODB_CONECTION_STRING;
 
 //App Initialize:
 let app = express();
+
+//All Routers Middlewares:
+
+app.use('/api/user',userRoutes);
+
 //Home route:
 app.get("/", (req, res) => {
   res.send("Server is working");
