@@ -2,8 +2,8 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 dotenv.config();
-import userRoutes from './Router/user.router.js';
-import authRoutes from './Router/auth.route.js'
+import userRoutes from "./Router/user.router.js";
+import authRoutes from "./Router/auth.route.js";
 //Port number initialize:
 let PORT = process.env.PORT || 5000;
 //Mongodb conncetion initializing:
@@ -11,14 +11,7 @@ let uri = process.env.MONGODB_CONECTION_STRING;
 //App Initialize:
 let app = express();
 //Middlewares:
-app.use(express.json())
-//All Routers Middlewares:
-app.use('/api/user',userRoutes);
-app.use('/api/auth',authRoutes);
-//Home route:
-app.get("/", (req, res) => {
-  res.send("Server is working");
-});
+app.use(express.json());
 //Connection to database :
 mongoose
   .connect(uri)
@@ -36,3 +29,23 @@ mongoose
   .catch((error) => {
     console.log("Mongoose conncetion failed ", error.message);
   });
+//Home route:
+app.get("/", (req, res) => {
+  res.send("Server is working");
+});
+
+//All Routers Middlewares:
+app.use("/api/user", userRoutes);
+app.use("/api/auth", authRoutes);
+
+//Create Middleware an functions to handle the error:
+
+app.use((err, req, res, next) => {
+  let statusCode = err.statusCode || 500;
+  let message = err.message || "Internal Server Error";
+  return res.status(statusCode).json({
+    success: false,
+    message,
+    statusCode,
+  });
+});
