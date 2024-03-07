@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-
 let userSchema = new mongoose.Schema(
   {
     userName: {
@@ -22,5 +21,4 @@ let userSchema = new mongoose.Schema(
 );
 
 let User = mongoose.model("User", userSchema);
-
 export default User;
