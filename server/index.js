@@ -2,6 +2,8 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 dotenv.config();
+import cors from 'cors';
+
 import userRoutes from "./Router/user.router.js";
 import authRoutes from "./Router/auth.route.js";
 //Port number initialize:
@@ -12,6 +14,7 @@ let uri = process.env.MONGODB_CONECTION_STRING;
 let app = express();
 //Middlewares:
 app.use(express.json());
+app.use(cors());
 //Connection to database :
 mongoose
   .connect(uri)
