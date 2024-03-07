@@ -2,19 +2,19 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 dotenv.config();
-import userRoutes from './Router/user.router.js'
+import userRoutes from './Router/user.router.js';
+import authRoutes from './Router/auth.route.js'
 //Port number initialize:
 let PORT = process.env.PORT || 5000;
 //Mongodb conncetion initializing:
 let uri = process.env.MONGODB_CONECTION_STRING;
-
 //App Initialize:
 let app = express();
-
+//Middlewares:
+app.use(express.json())
 //All Routers Middlewares:
-
 app.use('/api/user',userRoutes);
-
+app.use('/api/auth',authRoutes);
 //Home route:
 app.get("/", (req, res) => {
   res.send("Server is working");
