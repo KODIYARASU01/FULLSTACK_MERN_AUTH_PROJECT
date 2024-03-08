@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/SignIn.scss";
-import image from "../../assets/login_register/6.svg";
-import signup from "../../assets/login_register/signup.svg";
+import image from "../../assets/login_register/register.png";
+import signup from "../../assets/login_register/signup1.svg";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -89,7 +89,7 @@ const SignIn = () => {
         <div className="box_container">
           {!formToggle ? (
             <div className="left_image">
-              <img src={image} alt="image" />
+              <img className="login" src={image} alt="image" />
             </div>
           ) : (
             <div className="right_form">
@@ -140,7 +140,7 @@ const SignIn = () => {
                       <l-tail-chase
                         size="15"
                         speed="1.75"
-                        color="yellow"
+                        color="orange"
                       ></l-tail-chase>
                     ) : (
                       ""
@@ -209,7 +209,7 @@ const SignIn = () => {
                       <l-tail-chase
                         size="15"
                         speed="1.75"
-                        color="yellow"
+                        color="tomato"
                       ></l-tail-chase>
                     ) : (
                       ""
