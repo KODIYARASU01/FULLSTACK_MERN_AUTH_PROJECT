@@ -1,6 +1,7 @@
 import User from "../model/user.model.js";
 import bcryptjs from "bcryptjs";
 import { errorHandler } from "../utils/error.js";
+import jwt from "jsonwebtoken";
 
 //SignUp
 export const signUp = async (req, res, next) => {
@@ -40,6 +41,18 @@ export const signIn = async (req, res, next) => {
     if (!validPassword) {
       return next(401, "Wrong Credential");
     }
+    //Create Token for specific user:
+    let token = jwt.sign({ id: +validUser._id }, process.env.SECRET_KEY);
+    //Toekn expire time creating:
+
+    let tokenExpire=new Date(Date.now()+3600000); //1hr expire
+    //Password remove to send client side user details:
+    let { password: hashedPassword, ...rest } = validUser._doc;
+    res
+      .cookie("access_token", token, { httpOnly: true,expires:tokenExpire })
+      .status(201)
+      .json({ rest });
+
     return next(errorHandler(201, "Use Login Sucessfully"));
   } catch (error) {
     next(error);
