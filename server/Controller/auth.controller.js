@@ -42,17 +42,15 @@ export const signIn = async (req, res, next) => {
       return next(401, "Wrong Credential");
     }
     //Create Token for specific user:
-    let token = jwt.sign({ id: +validUser._id }, process.env.SECRET_KEY);
+    let token = jwt.sign({ id: validUser._id }, process.env.SECRET_KEY);
     //Password remove to send client side user details:
     let { password: hashedPassword, ...rest } = validUser._doc;
     //Token expire time creating:
     let tokenExpire = new Date(Date.now() + 3600000); //1hr expire
     res
-      .cookie("access_token", token, { expires: tokenExpire, httpOnly: true })
+      .cookie("access_token", token, { httpOnly: true, expires: tokenExpire })
       .status(201)
-      .json({ rest });
-
-    return next(errorHandler(201, "Use Login Sucessfully"));
+      .json(rest);
   } catch (error) {
     next(error);
   }

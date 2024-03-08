@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./SignUp.scss";
+import { Link, useNavigate } from "react-router-dom";
 const SignUp = () => {
+  let navigate = useNavigate();
   let [formData, setFormData] = useState({});
-  console.log(formData);
-
   //Handle All inputs:
   let handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -14,14 +14,17 @@ const SignUp = () => {
     e.preventDefault();
 
     let res = await fetch("http://localhost:5001/api/auth/signup", {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify(formData)
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
     });
 
     let data = await res.json();
     console.log(data);
-  
+    setTimeout(()=>{
+      navigate("/signIn");
+    },2000)
+
   };
 
   return (
@@ -68,6 +71,11 @@ const SignUp = () => {
               <button type="submit">SignUp</button>
             </div>
           </form>
+          <div className="signin_link">
+            <p>
+              Already u have on account ? <Link to="/signIn">SignIn</Link>
+            </p>
+          </div>
         </div>
       </div>
     </>

@@ -5,6 +5,7 @@ import Header from "./Component/Header/Header";
 import Home from "./Component/Pages/Home";
 import About from "./Component/Pages/About";
 import SignUp from "./Component/Pages/SignUp";
+import SignIn from "./Component/Pages/SignIn";
 const App = () => {
   return (
     <>
@@ -13,9 +14,10 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/signUp" element={<SignUp />} />
+        <Route path="/signIn" element={<SignIn />} />
       </Routes>
     </>
-  );
+  )
 };
 
 export default App;
