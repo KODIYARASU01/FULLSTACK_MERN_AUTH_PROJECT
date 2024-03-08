@@ -4,27 +4,55 @@ import "../styles/SignIn.scss";
 import image from "../../assets/login_register/6.svg";
 import signup from '../../assets/login_register/signup.svg'
 const SignIn = () => {
+    let navigate = useNavigate();
   let [formToggle, setFormToggle] = useState(false);
-  console.log(formToggle);
-  // let navigate = useNavigate();
-  // let [formData, setFormData] = useState({});
-  // //Handle All inputs:
-  // let handleChange = (e) => {
-  //   setFormData({ ...formData, [e.target.id]: e.target.value });
-  // };
-  // //Submit Form:
-  // let handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   let res = await fetch("http://localhost:5001/api/auth/signin", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify(formData),
-  //   });
-  //   await res.json();
-  //   setTimeout(()=>{
-  //     navigate("/");
-  //   },2000)
-  // };
+
+  //Sign Up :
+  let [signUpformData, setSignUpFormData] = useState({});
+  //Handle All inputs:
+  let handleSignUpChange = (e) => {
+    setSignUpFormData({ ...signUpformData, [e.target.id]: e.target.value });
+  };
+
+  //Submit Form:
+  let handleSignUpSubmit = async (e) => {
+    e.preventDefault();
+
+    let res = await fetch("http://localhost:5001/api/auth/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(signUpformData),
+    });
+
+    let data = await res.json();
+    console.log(data);
+    setTimeout(()=>{
+      setFormToggle(false)
+    },2000)
+
+  };
+
+  //Sign In :
+
+
+  let [signInformData, setSignInFormData] = useState({});
+  //Handle All inputs:
+  let handleSignInChange = (e) => {
+    setSignInFormData({ ...signInformData, [e.target.id]: e.target.value });
+  };
+  //Submit Form:
+  let handleSignInSubmit = async (e) => {
+    e.preventDefault();
+    let res = await fetch("http://localhost:5001/api/auth/signin", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(signInformData),
+    });
+    await res.json();
+    setTimeout(()=>{
+      navigate("/");
+    },2000)
+  };
 
   return (
     <>
@@ -40,7 +68,7 @@ const SignIn = () => {
                 <h4>Welcome to AristosTech Digital Card Creator!</h4>
                 <p>Create your new Account</p>
               </div>
-              <form action="">
+              <form action="" onSubmit={handleSignUpSubmit}>
               <div className="form_group">
                   <label htmlFor="username">UserName</label>
                   <input
@@ -48,6 +76,7 @@ const SignIn = () => {
                     placeholder="Give Unique userName"
                     name="username"
                     id="username"
+                    onChange={handleSignUpChange}
                   />
                 </div>
                 <div className="form_group">
@@ -57,6 +86,7 @@ const SignIn = () => {
                     placeholder="Eg : abc@gmail.com"
                     name="email"
                     id="email"
+                    onChange={handleSignUpChange}
                   />
                 </div>
                 <div className="form_group">
@@ -66,6 +96,7 @@ const SignIn = () => {
                     placeholder="Password"
                     name="password"
                     id="password"
+                    onChange={handleSignUpChange}
                   />
                 </div>
                 {/* <div className="forgot_password">
@@ -105,7 +136,7 @@ const SignIn = () => {
                 <h4>Welcome Back!</h4>
                 <p>Please enter login details below</p>
               </div>
-              <form action="">
+              <form action="" onSubmit={handleSignInSubmit}>
                 <div className="form_group">
                   <label htmlFor="email">Email</label>
                   <input
@@ -113,6 +144,7 @@ const SignIn = () => {
                     placeholder="Eg : abc@gmail.com"
                     name="email"
                     id="email"
+                    onChange={handleSignInChange}
                   />
                 </div>
                 <div className="form_group">
@@ -122,6 +154,7 @@ const SignIn = () => {
                     placeholder="Password"
                     name="password"
                     id="password"
+                    onChange={handleSignInChange}
                   />
                 </div>
                 <div className="forgot_password">

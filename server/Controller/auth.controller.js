@@ -5,20 +5,20 @@ import jwt from "jsonwebtoken";
 
 //SignUp
 export const signUp = async (req, res, next) => {
-  let { userName, email, password } = req.body;
+  let { username, email, password } = req.body;
 
   //Secure the password by using bcryptjs
   let hashedPassword = await bcryptjs.hash(password, 10);
-  let newUser = new User({ userName, email, password: hashedPassword });
+  let newUser = new User({ username, email, password: hashedPassword });
   try {
-    if (!userName || !email || !password) {
+    if (!username || !email || !password) {
       //   return res.status(201).json({
-      //     message: "Make sure to fill required Fields : userName,email,password",
+      //     message: "Make sure to fill required Fields : username,email,password",
       //   });
       next(
         errorHandler(
           401,
-          "Make sure to fill all required Fields : userName,email,password"
+          "Make sure to fill all required Fields : username,email,password"
         )
       );
     }
