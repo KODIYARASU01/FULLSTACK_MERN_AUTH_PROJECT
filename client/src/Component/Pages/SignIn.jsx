@@ -1,40 +1,38 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../styles/SignIn.scss";
 import image from "../../assets/login_register/6.svg";
-import signup from '../../assets/login_register/signup.svg'
+import signup from "../../assets/login_register/signup.svg";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const SignIn = () => {
-    let navigate = useNavigate();
-  let [formToggle, setFormToggle] = useState(false);
 
+  let [formToggle, setFormToggle] = useState(false);
   //Sign Up :
   let [signUpformData, setSignUpFormData] = useState({});
   //Handle All inputs:
   let handleSignUpChange = (e) => {
     setSignUpFormData({ ...signUpformData, [e.target.id]: e.target.value });
   };
-
   //Submit Form:
   let handleSignUpSubmit = async (e) => {
     e.preventDefault();
-
-    let res = await fetch("http://localhost:5001/api/auth/signup", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(signUpformData),
-    });
-
-    let data = await res.json();
-    console.log(data);
-    setTimeout(()=>{
-      setFormToggle(false)
-    },2000)
-
+    await axios
+      .post("http://localhost:5001/api/auth/signup", signUpformData)
+      .then((responce) => {
+        toast.success(responce.data.message);
+        setTimeout(() => {
+          setFormToggle(false);
+        }, 2000);
+      })
+      .catch((error) => {
+        toast.error(error.response.data.message)
+ 
+        setFormToggle(true);
+      });
   };
-
   //Sign In :
-
-
   let [signInformData, setSignInFormData] = useState({});
   //Handle All inputs:
   let handleSignInChange = (e) => {
@@ -43,20 +41,31 @@ const SignIn = () => {
   //Submit Form:
   let handleSignInSubmit = async (e) => {
     e.preventDefault();
-    let res = await fetch("http://localhost:5001/api/auth/signin", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(signInformData),
-    });
-    await res.json();
-    setTimeout(()=>{
-      navigate("/");
-    },2000)
+    await axios
+      .post("http://localhost:5001/api/auth/signin", signInformData)
+      .then((responce) => {
+        toast.success(responce.data.message);
+      })
+      .catch((error) => {
+        toast.error(error.response.data.message);
+      });
   };
-
   return (
     <>
       <div className="signin_container">
+        <ToastContainer
+          position="top-center"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+          transition:Bounce
+        />
         <div className="box_container">
           {!formToggle ? (
             <div className="left_image">
@@ -69,7 +78,7 @@ const SignIn = () => {
                 <p>Create your new Account</p>
               </div>
               <form action="" onSubmit={handleSignUpSubmit}>
-              <div className="form_group">
+                <div className="form_group">
                   <label htmlFor="username">UserName</label>
                   <input
                     type="text"
@@ -148,7 +157,7 @@ const SignIn = () => {
                   />
                 </div>
                 <div className="form_group">
-                  <label htmlFor="email">Password</label>
+                  <label htmlFor="password">Password</label>
                   <input
                     type="password"
                     placeholder="Password"

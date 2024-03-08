@@ -7,25 +7,24 @@ import jwt from "jsonwebtoken";
 export const signUp = async (req, res, next) => {
   let { username, email, password } = req.body;
 
-  //Secure the password by using bcryptjs
-  let hashedPassword = await bcryptjs.hash(password, 10);
-  let newUser = new User({ username, email, password: hashedPassword });
   try {
     if (!username || !email || !password) {
-      //   return res.status(201).json({
-      //     message: "Make sure to fill required Fields : username,email,password",
-      //   });
       next(
         errorHandler(
           401,
           "Make sure to fill all required Fields : username,email,password"
         )
       );
+    } else {
+      //Secure the password by using bcryptjss
+      let hashedPassword = bcryptjs.hashSync(password, 10);
+      let newUser = new User({ username, email, password: hashedPassword });
+      await newUser.save();
+      return res.status(201).json({ message: "User Created Sucessfully" });
     }
-    await newUser.save();
-    return res.status(201).json({ message: "User Created Sucessfully" });
   } catch (error) {
-    next(error);
+    console.log(error.message);
+    return res.status(401).json({ message: error.message });
   }
 };
 
@@ -33,6 +32,10 @@ export const signUp = async (req, res, next) => {
 export const signIn = async (req, res, next) => {
   let { email, password } = req.body;
   try {
+    if (!email || !password) {
+      return next(errorHandler(401, "Make Sure to Fill required fields"));
+    }
+
     let validUser = await User.findOne({ email });
     if (!validUser) {
       return next(errorHandler(401, "User Does Not Exist"));
@@ -50,7 +53,7 @@ export const signIn = async (req, res, next) => {
     res
       .cookie("access_token", token, { httpOnly: true, expires: tokenExpire })
       .status(201)
-      .json(rest);
+      .json({ rest, message: "User Login Sucessfully" });
   } catch (error) {
     next(error);
   }
