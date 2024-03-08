@@ -203,7 +203,18 @@ const SignIn = () => {
                   </Link>
                 </div>
                 <div className="form_submit">
-                  <button type="submit">Sign In</button>
+                  <button type="submit">
+                    Sign In{" "}
+                    {loader ? (
+                      <l-tail-chase
+                        size="15"
+                        speed="1.75"
+                        color="yellow"
+                      ></l-tail-chase>
+                    ) : (
+                      ""
+                    )}
+                  </button>
                 </div>
                 <div className="or">
                   <p>or &nbsp;&nbsp;&nbsp; Continue</p>
