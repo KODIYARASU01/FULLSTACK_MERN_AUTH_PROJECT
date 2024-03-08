@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./SignUp.scss";
+import '../styles/SignUp.scss'
 import { Link, useNavigate } from "react-router-dom";
 const SignUp = () => {
   let navigate = useNavigate();

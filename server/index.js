@@ -1,8 +1,9 @@
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import bodyParser from "body-parser";
 dotenv.config();
-import cors from 'cors';
+import cors from "cors";
 
 import userRoutes from "./Router/user.router.js";
 import authRoutes from "./Router/auth.route.js";
@@ -14,6 +15,8 @@ let uri = process.env.MONGODB_CONECTION_STRING;
 let app = express();
 //Middlewares:
 app.use(express.json());
+app.use(bodyParser.json({ limit: "30mb", extended: true }));
+app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 //Connection to database :
 mongoose
