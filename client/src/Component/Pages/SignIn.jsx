@@ -6,7 +6,11 @@ import signup from "../../assets/login_register/signup.svg";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "ldrs/tailChase";
 const SignIn = () => {
+  let [loader, setLoader] = useState(false);
+
+  // let url=import.meta.env.SERVER_LINK;
 
   let [formToggle, setFormToggle] = useState(false);
   //Sign Up :
@@ -18,19 +22,29 @@ const SignIn = () => {
   //Submit Form:
   let handleSignUpSubmit = async (e) => {
     e.preventDefault();
-    await axios
-      .post("http://localhost:5001/api/auth/signup", signUpformData)
-      .then((responce) => {
-        toast.success(responce.data.message);
-        setTimeout(() => {
-          setFormToggle(false);
-        }, 2000);
-      })
-      .catch((error) => {
-        toast.error(error.response.data.message)
- 
-        setFormToggle(true);
-      });
+
+    try {
+      setLoader(true);
+      await axios
+        .post(
+          `https://fullstack-mern-auth-project.onrender.com/api/auth/signup`,
+          signUpformData
+        )
+        .then((responce) => {
+          toast.success(responce.data.message);
+          setLoader(false);
+          setTimeout(() => {
+            setFormToggle(false);
+          }, 2000);
+        })
+        .catch((error) => {
+          toast.error(error.response.data.message);
+          setLoader(false);
+          setFormToggle(true);
+        });
+    } catch (err) {
+      console.log(err);
+    }
   };
   //Sign In :
   let [signInformData, setSignInFormData] = useState({});
@@ -41,13 +55,19 @@ const SignIn = () => {
   //Submit Form:
   let handleSignInSubmit = async (e) => {
     e.preventDefault();
+    setLoader(true);
     await axios
-      .post("http://localhost:5001/api/auth/signin", signInformData)
+      .post(
+        `https://fullstack-mern-auth-project.onrender.com/api/auth/signin`,
+        signInformData
+      )
       .then((responce) => {
+        setLoader(false);
         toast.success(responce.data.message);
       })
       .catch((error) => {
         toast.error(error.response.data.message);
+        setLoader(false);
       });
   };
   return (
@@ -114,7 +134,18 @@ const SignIn = () => {
                   </Link>
                 </div> */}
                 <div className="form_submit">
-                  <button type="submit">Sign Up</button>
+                  <button type="submit">
+                    Sign Up
+                    {loader ? (
+                      <l-tail-chase
+                        size="15"
+                        speed="1.75"
+                        color="yellow"
+                      ></l-tail-chase>
+                    ) : (
+                      ""
+                    )}
+                  </button>
                 </div>
                 <div className="or">
                   <p>or Continue</p>
@@ -175,7 +206,7 @@ const SignIn = () => {
                   <button type="submit">Sign In</button>
                 </div>
                 <div className="or">
-                  <p>or Continue</p>
+                  <p>or &nbsp;&nbsp;&nbsp; Continue</p>
                 </div>
               </form>
 

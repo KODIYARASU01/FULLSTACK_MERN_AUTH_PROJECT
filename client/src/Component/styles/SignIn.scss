@@ -44,10 +44,10 @@
   .box_container {
     width: 80%;
     height: 75%;
-      z-index: 600;
-    background:linear-gradient(#ffffff , #ffffff);
+    z-index: 600;
+    background: linear-gradient(#ffffff, #ffffff);
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-border-radius: 1rem;
+    border-radius: 1rem;
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -64,33 +64,31 @@ border-radius: 1rem;
       border-top-right-radius: 0%;
       // background: linear-gradient(#A1C4FD   ,#C2E9FB);
 
-
-
       img {
-       width: 400px;
+        width: 400px;
         object-fit: cover;
         object-position: center;
 
-        @media screen and (max-width:900px){
+        @media screen and (max-width: 900px) {
           width: 300px;
         }
-        @media screen and (max-width:500px){
+        @media screen and (max-width: 500px) {
           width: 230px;
         }
       }
 
-      @media screen and (max-width:900px){
+      @media screen and (max-width: 900px) {
         flex: 0.4;
       }
-      @media screen and (max-width:800px){
+      @media screen and (max-width: 800px) {
         flex: 1;
         width: 100%;
       }
-      @media screen and (max-width:500px){
+      @media screen and (max-width: 500px) {
         // border-bottom-right-radius: 20%;
         // border-top-left-radius: 20%;
-      //  border-radius: 20%;
-      border-radius: 0%;
+        //  border-radius: 20%;
+        border-radius: 0%;
       }
     }
     .right_form {
@@ -101,23 +99,23 @@ border-radius: 1rem;
       flex: 0.4;
       height: 100%;
       padding: 1rem;
-    //   padding: 0.5rem 1rem;
+      //   padding: 0.5rem 1rem;
 
-    .form_title{
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: flex-start;
-      gap: 10px;
+      .form_title {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 10px;
 
-      h4{
-        letter-spacing: 1px;
+        h4 {
+          letter-spacing: 1px;
+        }
+        p {
+          font-size: 0.8rem;
+          color: gray;
+        }
       }
-      p{
-        font-size: 0.8rem;
-        color: gray;
-      }
-    }
 
       form {
         width: 100%;
@@ -141,14 +139,17 @@ border-radius: 1rem;
           label {
             position: absolute;
             padding: 0px 5px;
-            top: -12px;
-            left: 20%;
+            top: -7px;
+            left: 15%;
             color: gray;
-            font-size: 0.8rem;
+            // background: linear-gradient(#000,tomato);
+            -webkit-text-fill-color: rgb(17, 179, 184);
+            font-size: 0.7rem;
             background-color: white;
+            border-radius: 4px;
 
-            @media screen and (max-width:800px){
-          left: 10%;
+            @media screen and (max-width: 800px) {
+              left: 10%;
             }
           }
 
@@ -157,16 +158,16 @@ border-radius: 1rem;
             padding: 15px 2rem;
             // border: 2px solid rgb(177, 238, 128);
             border: double 2px transparent;
-            border-radius: 0.7rem;
+            border-radius: 0.5rem;
 
             background-image: linear-gradient(white, white),
-              linear-gradient(to right, rgb(90, 100, 230), rgb(167, 252, 141));
-         
+              linear-gradient(to right, rgb(245, 207, 84), rgb(167, 252, 141));
+
             background-origin: border-box;
             background-clip: padding-box, border-box;
             border-radius: 0.7rem;
             outline: none;
-         
+
             transition: all 0.3s ease;
             &::placeholder {
               font-size: 0.7rem;
@@ -176,22 +177,18 @@ border-radius: 1rem;
             &:focus {
               border: double 2px transparent;
               border-radius: 0.7rem;
-
               background-image: linear-gradient(white, white),
                 linear-gradient(to right, rgb(125, 248, 207), rgb(84, 123, 248));
-           
               background-origin: border-box;
               background-clip: padding-box, border-box;
-
               transition: all 0.3s ease;
-
-          
+            
             }
-            @media screen and (max-width:800px){
-           width: 100%;
+
+            @media screen and (max-width: 800px) {
+              width: 100%;
             }
           }
-        
         }
         .forgot_password {
           width: 100%;
@@ -229,6 +226,10 @@ border-radius: 1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.4s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
 
             &:hover {
               background-color: royalblue;
@@ -241,7 +242,7 @@ border-radius: 1rem;
           display: flex;
           align-items: center;
           justify-content: center;
-   
+
           p {
             width: 100%;
             font-size: 0.7rem;
@@ -256,8 +257,8 @@ border-radius: 1rem;
             &::before {
               content: "";
               height: 1px;
-              width:150px;
-              background: linear-gradient(#5161f3,#e6f1a8);
+              width: 150px;
+              background: linear-gradient(#5161f3, #e6f1a8);
               position: absolute;
               left: 0%;
             }
@@ -266,16 +267,16 @@ border-radius: 1rem;
               content: "";
               height: 1px;
               width: 150px;
-              background: linear-gradient(#5161f3,#e6f1a8);
+              background: linear-gradient(#5161f3, #e6f1a8);
               position: absolute;
               right: 0%;
             }
           }
         }
       }
-      .google_signin{
+      .google_signin {
         width: 70%;
-        margin: 1rem  auto ;
+        margin: 1rem auto;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -285,83 +286,83 @@ border-radius: 1rem;
         border-radius: 0.5rem;
         cursor: pointer;
         transition: all 0.3s ease-in-out;
-        img{
-            width: 30px;
-            height: 30px;
+        img {
+          width: 30px;
+          height: 30px;
 
-            @media screen and (max-width:500px){
-              width: 25px;
+          @media screen and (max-width: 500px) {
+            width: 25px;
             height: 25px;
-             } 
+          }
         }
-        p{
-            font-size: 0.8rem;
-            font-weight: 500;
-            letter-spacing: 1px;
+        p {
+          font-size: 0.8rem;
+          font-weight: 500;
+          letter-spacing: 1px;
 
-            @media screen and (max-width:500px){
-             font-size: 0.6rem;
-            }   
-        }
-
-        &:hover{
-            border: double 1px transparent;
-            border-radius: 6px;
-
-            background-image: linear-gradient(white, white),
-              linear-gradient(to right, rgb(125, 253, 200), rgb(240, 126, 160));
-         
-            background-origin: border-box;
-            background-clip: padding-box, border-box;
-            transition: all 0.3s ease-in-out;
+          @media screen and (max-width: 500px) {
+            font-size: 0.6rem;
+          }
         }
 
-        @media screen and (max-width:500px){
+        &:hover {
+          border: double 1px transparent;
+          border-radius: 6px;
+
+          background-image: linear-gradient(white, white),
+            linear-gradient(to right, rgb(125, 253, 200), rgb(240, 126, 160));
+
+          background-origin: border-box;
+          background-clip: padding-box, border-box;
+          transition: all 0.3s ease-in-out;
+        }
+
+        @media screen and (max-width: 500px) {
           width: 90%;
         }
       }
-      .signup_link{
+      .signup_link {
         margin: 1rem;
         width: 100%;
         display: flex;
         align-items: flex-end;
         justify-content: center;
 
-        p{
-            font-size: 0.8rem;
-            font-weight: 500;
-            letter-spacing: 1px;
+        p {
+          font-size: 0.8rem;
+          font-weight: 500;
+          letter-spacing: 1px;
 
-            a{
-                text-decoration: none;
-                color: royalblue;
-            }
+          a {
+            text-decoration: none;
+            color: royalblue;
+          }
         }
       }
-      @media screen and (max-width:900px){
+      @media screen and (max-width: 900px) {
         flex: 0.6;
       }
-      @media screen and (max-width:800px){
+      @media screen and (max-width: 800px) {
         flex: 1;
         width: 100%;
       }
     }
-    @media screen and (max-width:800px){
+    @media screen and (max-width: 800px) {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
       height: auto;
     }
-    @media screen and (max-width:500px){
-    width: 100%;
-    height: 100vh;
-     }
+    @media screen and (max-width: 500px) {
+      width: 100%;
+      height: 100vh;
+    }
   }
-  @media screen and (max-width:800px){
-   height: auto;
+  @media screen and (max-width: 800px) {
+    height: auto;
   }
-  @media screen and (max-width:500px){
+  @media screen and (max-width: 500px) {
     background-image: url(../../assets/login_register/21.jpg);
     background-position: center;
     background-repeat: no-repeat;

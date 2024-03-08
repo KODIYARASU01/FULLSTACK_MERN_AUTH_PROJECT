@@ -12,7 +12,7 @@ export const signUp = async (req, res, next) => {
       next(
         errorHandler(
           401,
-          "Make sure to fill all required Fields : username,email,password"
+          "Fill Up All required Fields"
         )
       );
     } else {
