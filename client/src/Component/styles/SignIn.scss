@@ -301,18 +301,17 @@
             padding: 1.1rem 2rem;
             outline: none;
             border: transparent;
-
             background-color: royalblue;
             color: #fff;
             border-radius: 0.5rem;
             letter-spacing: 1px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.4s ease-in-out;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 3rem;
+            transition: all 0.2s ease-in-out;
 
             .rocket {
               position: absolute;
@@ -325,7 +324,7 @@
             }
             &:hover {
               background-color: black;
-              transition: all 0.4s ease-in-out;
+              transition: all 0.2s ease-in-out;
             }
           }
         }
@@ -479,12 +478,12 @@
 
 //LOaders::after
 .loader {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   display: inline-block;
   position: relative;
   border-radius: 4px;
-  color: #eefa4c;
+  color: #f5f83b;
   box-sizing: border-box;
   animation: animloader 0.6s linear infinite;
 }
