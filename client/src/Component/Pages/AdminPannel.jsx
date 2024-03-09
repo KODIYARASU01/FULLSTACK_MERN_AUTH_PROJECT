@@ -1,10 +1,16 @@
 import React from 'react'
 import '../styles/AdminPannel.scss'
+import Header from './Header';
 const AdminPannel = () => {
   return (
-    <div>
-      Admin Pannel
-    </div>
+   
+   <>
+   <div className="admin_container">
+    <Header/>
+
+    admin
+   </div>
+   </>
   )
 }
 
