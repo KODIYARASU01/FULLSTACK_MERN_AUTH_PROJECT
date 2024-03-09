@@ -6,7 +6,8 @@ import signup from "../../assets/login_register/signup1.svg";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "ldrs/bouncy";
+// import "ldrs/bouncy";
+
 
 const SignIn = () => {
   let [loader, setLoader] = useState(false);
@@ -146,15 +147,7 @@ const SignIn = () => {
                 <div className="form_submit">
                   <button type="submit">
                     Sign Up
-                    {loader ? (
-                      <l-bouncy
-                        size="25"
-                        speed="1.95"
-                        color="yellow"
-                      ></l-bouncy>
-                    ) : (
-                      ""
-                    )}
+                    {loader ? <span className="loader"></span> : ""}
                     {!loader ? (
                       <div className="rocket">
                         <i className="bx bxs-rocket bx-flashing"></i>
@@ -227,16 +220,7 @@ const SignIn = () => {
                 </div>
                 <div className="form_submit">
                   <button type="submit">
-                    Sign In{" "}
-                    {loader ? (
-                      <l-bouncy
-                        size="25"
-                        speed="1.95"
-                        color="yellow"
-                      ></l-bouncy>
-                    ) : (
-                      ""
-                    )}
+                    Sign In {loader ? <span className="loader"></span> : ""}
                     {!loader ? (
                       <div className="rocket">
                         <i className="bx bxs-rocket bx-flashing"></i>
