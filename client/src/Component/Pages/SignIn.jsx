@@ -6,7 +6,8 @@ import signup from "../../assets/login_register/signup1.svg";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "ldrs/tailChase";
+import "ldrs/bouncy";
+
 const SignIn = () => {
   let [loader, setLoader] = useState(false);
 
@@ -74,7 +75,7 @@ const SignIn = () => {
     <>
       <div className="signin_container">
         <ToastContainer
-          position="top-center"
+          position="top-right"
           autoClose={2000}
           hideProgressBar={false}
           newestOnTop={false}
@@ -107,6 +108,9 @@ const SignIn = () => {
                     id="username"
                     onChange={handleSignUpChange}
                   />
+                  <div className="icon">
+                    <i className="bx bxs-user"></i>
+                  </div>
                 </div>
                 <div className="form_group">
                   <label htmlFor="email">Email</label>
@@ -117,6 +121,9 @@ const SignIn = () => {
                     id="email"
                     onChange={handleSignUpChange}
                   />
+                  <div className="icon">
+                    <i className="bx bxs-envelope"></i>
+                  </div>
                 </div>
                 <div className="form_group">
                   <label htmlFor="email">Password</label>
@@ -127,6 +134,9 @@ const SignIn = () => {
                     id="password"
                     onChange={handleSignUpChange}
                   />
+                  <div className="icon">
+                    <i className="bx bxs-lock"></i>
+                  </div>
                 </div>
                 {/* <div className="forgot_password">
                   <Link>
@@ -137,11 +147,18 @@ const SignIn = () => {
                   <button type="submit">
                     Sign Up
                     {loader ? (
-                      <l-tail-chase
-                        size="15"
-                        speed="1.75"
-                        color="orange"
-                      ></l-tail-chase>
+                      <l-bouncy
+                        size="25"
+                        speed="1.95"
+                        color="yellow"
+                      ></l-bouncy>
+                    ) : (
+                      ""
+                    )}
+                    {!loader ? (
+                      <div className="rocket">
+                        <i className="bx bxs-rocket bx-flashing"></i>
+                      </div>
                     ) : (
                       ""
                     )}
@@ -186,6 +203,9 @@ const SignIn = () => {
                     id="email"
                     onChange={handleSignInChange}
                   />
+                  <div className="icon">
+                    <i className="bx bxs-envelope"></i>
+                  </div>
                 </div>
                 <div className="form_group">
                   <label htmlFor="password">Password</label>
@@ -196,6 +216,9 @@ const SignIn = () => {
                     id="password"
                     onChange={handleSignInChange}
                   />
+                  <div className="icon">
+                    <i className="bx bxs-lock-open"></i>
+                  </div>
                 </div>
                 <div className="forgot_password">
                   <Link>
@@ -206,11 +229,18 @@ const SignIn = () => {
                   <button type="submit">
                     Sign In{" "}
                     {loader ? (
-                      <l-tail-chase
-                        size="15"
-                        speed="1.75"
-                        color="tomato"
-                      ></l-tail-chase>
+                      <l-bouncy
+                        size="25"
+                        speed="1.95"
+                        color="yellow"
+                      ></l-bouncy>
+                    ) : (
+                      ""
+                    )}
+                    {!loader ? (
+                      <div className="rocket">
+                        <i className="bx bxs-rocket bx-flashing"></i>
+                      </div>
                     ) : (
                       ""
                     )}
