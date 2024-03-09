@@ -27,7 +27,7 @@
 // }
 .signin_container {
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
   background-image: url(../../assets/login_register/27.jpg);
   background-position: center;
   background-repeat: no-repeat;
@@ -57,14 +57,15 @@
       height: 100%;
       display: flex;
       flex: 0.6;
+
+      background-color: #5161f3;
       align-items: center;
       justify-content: center;
-      border-bottom-right-radius: 30%;
-      border-top-left-radius: 30%;
-      border-top-right-radius: 0%;
+      border-top-right-radius: 1rem;
+      border-bottom-right-radius: 1rem;
       // background: linear-gradient(#A1C4FD   ,#C2E9FB);
 
-      .login{
+      .login {
         width: 600px;
         object-fit: cover;
         object-position: center;
@@ -74,6 +75,7 @@
         }
         @media screen and (max-width: 500px) {
           width: 230px;
+       
         }
       }
       img {
@@ -85,7 +87,8 @@
           width: 300px;
         }
         @media screen and (max-width: 500px) {
-          width: 180px;
+          width: 250px;
+          // display: none;
         }
       }
 
@@ -101,6 +104,68 @@
         // border-top-left-radius: 20%;
         //  border-radius: 20%;
         border-radius: 0%;
+        // background-image: url(../../assets/login_register/1.jpg);
+        // background-position: center;
+        // background-repeat: no-repeat;
+        // background-size: cover;
+      }
+    }
+    .right_image {
+      width: 50%;
+      height: 100%;
+      display: flex;
+      flex: 0.6;
+      background-color: #5161f3;
+      align-items: center;
+      justify-content: center;
+      border-top-left-radius: 1rem;
+      border-bottom-left-radius: 1rem;
+      border-top-right-radius: 0%;
+      // background: linear-gradient(#A1C4FD   ,#C2E9FB);
+
+      .login {
+        width: 600px;
+        object-fit: cover;
+        object-position: center;
+
+        @media screen and (max-width: 900px) {
+          width: 400px;
+        }
+        @media screen and (max-width: 500px) {
+          width: 350px;
+        }
+      }
+      img {
+        width: 700px;
+        object-fit: cover;
+        object-position: center;
+
+        @media screen and (max-width: 900px) {
+          width: 250px;
+        }
+        @media screen and (max-width: 500px) {
+          width: 350px;
+          // display: none;
+        }
+      }
+
+      @media screen and (max-width: 900px) {
+        flex: 0.4;
+      }
+      @media screen and (max-width: 800px) {
+        flex: 1;
+        width: 100%;
+      }
+      @media screen and (max-width: 500px) {
+        // border-bottom-right-radius: 20%;
+        // border-top-left-radius: 20%;
+        //  border-radius: 20%;
+        border-radius: 0%;
+        // background-image: url(../../assets/login_register/loginBackground1.jpg);
+        // background-position: center;
+        // background-repeat: no-repeat;
+        // object-fit: cover;
+        // background-size: cover;
       }
     }
     .right_form {
@@ -194,20 +259,21 @@
               background-origin: border-box;
               background-clip: padding-box, border-box;
               transition: all 0.3s ease;
-            
             }
 
             @media screen and (max-width: 800px) {
               width: 100%;
+              background-image: linear-gradient(white, white),
+                linear-gradient(to right, rgb(84, 135, 245), rgb(252, 145, 141));
             }
           }
 
-          .icon{
+          .icon {
             position: absolute;
             left: 15%;
             top: 25%;
 
-            i{
+            i {
               font-size: 1.4rem;
               color: skyblue;
             }
@@ -217,7 +283,6 @@
               top: 25%;
             }
           }
-
         }
         .forgot_password {
           width: 100%;
@@ -250,7 +315,8 @@
             padding: 1.1rem 2rem;
             outline: none;
             border: transparent;
-            background-color: black;
+
+            background-color: royalblue;
             color: #fff;
             border-radius: 0.5rem;
             letter-spacing: 1px;
@@ -262,22 +328,20 @@
             justify-content: center;
             gap: 3rem;
 
-            .rocket{
+            .rocket {
               position: absolute;
               left: 7%;
-  
-              i{
+
+              i {
                 font-size: 1.5rem;
                 color: rgb(135, 250, 125);
               }
             }
             &:hover {
-              background-color: royalblue;
+              background-color: black;
               transition: all 0.4s ease-in-out;
             }
           }
-
-        
         }
         .or {
           width: 100%;
@@ -303,6 +367,10 @@
               background: linear-gradient(#5161f3, #e6f1a8);
               position: absolute;
               left: 0%;
+
+              @media screen and (max-width: 900px) {
+                width: 100px;
+              }
             }
 
             &::after {
@@ -312,6 +380,9 @@
               background: linear-gradient(#5161f3, #e6f1a8);
               position: absolute;
               right: 0%;
+              @media screen and (max-width: 900px) {
+                width: 100px;
+              }
             }
           }
         }
@@ -324,8 +395,12 @@
         justify-content: center;
         gap: 1rem;
         padding: 10px 2rem;
-        border: 1px solid gray;
-        border-radius: 0.5rem;
+        background-image: linear-gradient(white, white),
+          linear-gradient(to right, rgb(84, 87, 247), rgb(66, 241, 241));
+          background-origin: border-box;
+          background-clip: padding-box, border-box;
+        border: double 1px transparent;
+        border-radius: 6px;
         cursor: pointer;
         transition: all 0.3s ease-in-out;
         img {
@@ -387,7 +462,6 @@
       @media screen and (max-width: 800px) {
         flex: 1;
         width: 100%;
-
       }
     }
     @media screen and (max-width: 800px) {
@@ -396,10 +470,13 @@
       align-items: center;
       justify-content: flex-start;
       height: auto;
+      box-shadow: none;
     }
     @media screen and (max-width: 500px) {
       width: 100%;
       height: 100vh;
+      box-shadow: none;
+      border-radius: 0rem;
     }
   }
   @media screen and (max-width: 800px) {
@@ -412,7 +489,6 @@
     background-size: cover;
   }
 }
-
 
 //LOaders::after
 .loader {
@@ -431,7 +507,7 @@
     box-shadow: 20px -10px, 40px 10px, 60px 0px;
   }
   25% {
-    box-shadow: 20px 0px, 40px  0px, 60px 10px;
+    box-shadow: 20px 0px, 40px 0px, 60px 10px;
   }
   50% {
     box-shadow: 20px 10px, 40px -10px, 60px 0px;
@@ -443,4 +519,3 @@
     box-shadow: 20px -10px, 40px 10px, 60px 0px;
   }
 }
-    

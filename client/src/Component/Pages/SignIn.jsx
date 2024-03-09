@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/SignIn.scss";
-import image from "../../assets/login_register/register.png";
-import signup from "../../assets/login_register/signup1.svg";
+import image from "../../assets/login_register/register3.svg";
+import signup from "../../assets/login_register/sign2.svg";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -90,7 +90,7 @@ const SignIn = () => {
         />
         <div className="box_container">
           {!formToggle ? (
-            <div className="left_image">
+            <div className="right_image">
               <img className="login" src={image} alt="image" />
             </div>
           ) : (
@@ -104,7 +104,7 @@ const SignIn = () => {
                   <label htmlFor="username">UserName</label>
                   <input
                     type="text"
-                    placeholder="Give Unique userName"
+                    placeholder="Enter Unique userName"
                     name="username"
                     id="username"
                     onChange={handleSignUpChange}
