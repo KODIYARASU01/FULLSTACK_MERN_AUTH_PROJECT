@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/SignIn.scss";
-import image from "../../assets/login_register/register3.svg";
-import signup from "../../assets/login_register/sign2.svg";
+import image from "../../assets/login_register/5.svg";
+import signup from "../../assets/login_register/signup1.svg";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
