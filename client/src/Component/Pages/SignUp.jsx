@@ -5,6 +5,7 @@ import signup from "../../assets/login_register/codeThinker.svg";
 import axios from "axios";
 import { Slide, toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import OAUTH from "../OAUTH";
 const SignUp = () => {
   let navigate = useNavigate();
   let [loader, setLoader] = useState(false);
@@ -21,7 +22,7 @@ const SignUp = () => {
       setLoader(true);
       await axios
         .post(
-          `https://fullstack-mern-auth-project.onrender.com/api/auth/signup`,
+          `http://localhost:5001/api/auth/signup`,
           signUpformData
         )
         .then((responce) => {
@@ -121,15 +122,8 @@ const SignUp = () => {
               </div>
             </form>
 
-            <div className="google_signin">
-              <img
-                width="48"
-                height="48"
-                src="https://img.icons8.com/fluency/48/google-logo.png"
-                alt="google-logo"
-              />
-              <p>Sign Up With Google</p>
-            </div>
+           {/* //GOOGLE SIGN IN */}
+           <OAUTH />
             <div className="signup_link">
               <p>
                 Already have an Account ? <Link to="/">Sign In</Link>

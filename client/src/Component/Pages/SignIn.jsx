@@ -11,6 +11,7 @@ import {
   signInStart,
 } from "../../redux/user/userSlice.js";
 import { useDispatch } from "react-redux";
+import OAUTH from "../OAUTH.jsx";
 const SignIn = () => {
   let dispatch = useDispatch();
   let navigate = useNavigate();
@@ -30,7 +31,7 @@ const SignIn = () => {
       setLoader(true);
       await axios
         .post(
-          `https://fullstack-mern-auth-project.onrender.com/api/auth/signin`,
+          `http://localhost:5001/api/auth/signin`,
           signInformData
         )
         .then((responce) => {
@@ -47,11 +48,11 @@ const SignIn = () => {
           setLoader(false);
           setTimeout(() => {
             navigate("/admin");
-          },2000);
+          }, 2000);
         })
         .catch((error) => {
           dispatch(signInFailure());
-          console.log(error.response)
+          console.log(error.response);
           toast.error(error.response.data.message, {
             position: "top-center",
             autoClose: 2000,
@@ -130,16 +131,8 @@ const SignIn = () => {
                 <p>or &nbsp;&nbsp;&nbsp; Continue</p>
               </div>
             </form>
-
-            <div className="google_signin">
-              <img
-                width="48"
-                height="48"
-                src="https://img.icons8.com/fluency/48/google-logo.png"
-                alt="google-logo"
-              />
-              <p>Log In With Google</p>
-            </div>
+{/* //GOOGLE SIGN IN */}
+            <OAUTH />
             <div className="signup_link">
               <p>
                 Don't have an account ? <Link to="/signup">Sign Up</Link>
