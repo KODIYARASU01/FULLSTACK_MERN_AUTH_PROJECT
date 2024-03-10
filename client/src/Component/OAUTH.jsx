@@ -15,7 +15,7 @@ export default function OAUTH() {
 
       const result = await signInWithPopup(auth, provider);
 
-      const res = await fetch('http://localhost:5001/api/auth/google', {
+      const res = await fetch('https://fullstack-mern-auth-project.onrender.com/api/auth/google', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
