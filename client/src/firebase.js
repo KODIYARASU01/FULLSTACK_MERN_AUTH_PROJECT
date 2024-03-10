@@ -8,7 +8,7 @@ import { initializeApp } from "firebase/app";
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: "mern-auth-90e79.firebaseapp.com",
+  authDomain: "fullstack-mern-auth-project.onrender.com",
   projectId: "mern-auth-90e79",
   storageBucket: "mern-auth-90e79.appspot.com",
   messagingSenderId: "46213656177",
