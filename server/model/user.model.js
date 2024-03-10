@@ -19,6 +19,10 @@ let userSchema = new mongoose.Schema(
     profile:{
       type:String,
       default:'https://cdn.vectorstock.com/i/preview-1x/17/61/male-avatar-profile-picture-vector-10211761.jpg'
+    },
+    mobileNumber:{
+type:String,
+unique:true
     }
   },
   { timestamps: true }

@@ -22,7 +22,7 @@ const SignUp = () => {
       setLoader(true);
       await axios
         .post(
-          `http://localhost:5001/api/auth/signup`,
+          `https://fullstack-mern-auth-project.onrender.com/api/auth/signup`,
           signUpformData
         )
         .then((responce) => {
